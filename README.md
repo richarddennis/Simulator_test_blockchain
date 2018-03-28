@@ -57,7 +57,11 @@ Build ns3 using the ./waf command.
 BITCOIN SIMULATOR
 The Bitcoin Simulator can be easily configured via command line parameters. Below is presented a table of all the input parameters along with their default values.
 
+```
+
 INPUT PARAMETERS
+```
+
 Parameter	Description	Default Value
 blockSize	The fixed block size (Bytes). If the default value is used then the blockSize follows the real bitcoin block size distribution as estimated by collecting stats from blockchain.info	-1
 noBlocks	The number of generated blocks	100
@@ -77,8 +81,10 @@ chunkSize	The chunksize of the blockTorrent in Bytes. Used only in conjuction wi
 spv	Enable the spv mechanism in blockTorrent.Used only in conjuction with --blockTorrent. The nodes are able to advertise chunks of blocks which are not yet validated.	false
 OPTIMAL ADVERSARIAL ATTACKER
 The optimal adversarial attacker can also be configured via command line parameters. Below is presented a table of all the input parameters along with their default values.
-
+```
 INPUT PARAMETERS
+```
+
 Parameter	Description	Default Value
 blockIntervalMinutes	The average block generation interval in minutes.	10
 noBlocks	The number of generated blocks	100
@@ -87,13 +93,28 @@ r	The stale block rate	0
 unsolicited	Change the miners block broadcast type to UNSOLICITED. Each newly mined block is broadcast immediately to all the peers of the miner who mined it.	false
 relayNetwork	Change the miners block broadcast type to RELAY_NETWORK. The miners use a relay network for communicating among themselves and send compressed blocks.	false
 unsolicitedRelayNetwork	Change the miners block broadcast type to UNSOLICITED_RELAY_NETWORK. The miners use a relay network among themselves and send compressed blocks and each newly mined block is broadcast immediately to all the peers of the miner who mined it.	falseNotes
+
 The number of miners, their hash rates and their locations can be changed by modifying the arrays minersHash and minersRegions. The attacker's hash rate is always the last value in minersHash.
 To modify the optimal strategy, the m_decisionMatrix in bitcoin-selfish-miner.h must be updated accordingly.
+```
 TUTORIAL
+```
+
 Here we demonstrate some basic examples of how you can use the simulator:
 If you want to run a simple Bitcoin simulation for 100 blocks and 6000 nodes, you can just enter the following command:
+```
+
 ./waf --run "bitcoin-test --noBlocks=100 --nodes=6000"
+```
+
 If you want to start the simulation for 1000 blocks in LITECOIN mode and with a block size of 2MB you have to enter the following command:
+```
+
 ./waf --run "bitcoin-test --noBlocks=1000 --litecoin --blockSize=2000000"
+```
+
 You can also use mpi to speed up the simulation:
+```
+
 mpirun -n 2 ./waf --run "bitcoin-test --noBlocks=1000 --litecoin --blockSize=2000000"
+```
